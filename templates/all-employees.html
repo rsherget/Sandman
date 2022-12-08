@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sandman</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+  <div id="header">
+    <button onclick="location.href = '/home';" id="home">Home</button>
+    <button onclick="location.href = '/remove-employee';" id="remove-employee"> Fire Employee </button>
+    <button onclick="location.href = '/add-employee';" id="add-employee"> Add Employee </button>
+    <button onclick="location.href = '/all-employees';" id="manager"> Employer Tools </button>
+    <button onclick="location.href = '/scheduler';" id="scheduler"> Create Schedule </button>
+    <button onclick="location.href = '/logout';" id="signout">Sign Out</button>
+  </div>
+  
+  <!--Month/year top of calendar--> 
+  <h1 id="monthtitle" align="center">
+   All Employees
+  </h1>
+  <br />
+  
+<table id="calendar" bgcolor="#fbff84" align="center" 
+        cellspacing="0" cellpadding="30">
+  
+  <caption align="top">
+    
+    </caption>
+  
+  <thead>
+     <tr bgcolor="#fa9020">
+        <th>Username</th>
+        <th>Name</th>
+        <th>Manager</th>
+     </tr>
+	</thead>
+        <tbody>
+          {% for user in users %}
+            <tr>
+                <td> {{user.user_id}} </td>
+                <td> {{user.name}} </td>
+                <td> {{user.manager}} </td>
+       		</tr>
+          {% endfor %}
+        </tbody>
+    </table>
+  
+  
+      
+</body> 

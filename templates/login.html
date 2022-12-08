@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <title> Sandman </title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+  <div id="logo">
+    <h2 id="logotext">SANDMAN</h2>
+    <img src="https://media3.giphy.com/media/xT9IgOdxEm8gYoJblC/200w.webp?cid=ecf05e477nh1bdak69xwa3cyzbcn40kbovsqju2mquztzpge&rid=200w.webp&ct=g">
+    
+  </div>
+  <div id="logindiv">
+    <form action="" method="post">
+      <p>Username</p>
+      <input type="text" placeholder="Username" name="username" value="{{ request.form.username }}">
+      <p>Password</p>
+      <input type="password" placeholder="Password" name="password" value="{{ request.form.password }}">
+      <p></p>
+    	<input class="btn btn-default" type="submit" value="Login">
+    </form>
+    {% if error %}
+      <p class="error"><strong>Error:</strong> {{ error }}
+    {% endif %}
+  </div>
+</body>  
+</html>
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sandman</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+  <div id="header">
+    <button onclick="location.href = '/home';" id="home">Home</button>
+    <button onclick="location.href = '/clock-in';" id="home">Clock In</button>
+    <button onclick="location.href = '/clock-out';" id="home">Clock Out</button>
+    <button onclick="location.href = '/request-time';" id="reqtimeoff">Request Time off</button>
+    <button onclick="location.href = '/check-hours';">Check hours</button>
+    <button onclick="location.href = '/all-employees';" id="manager"> Employer Tools </button>
+    <button onclick="location.href = '/logout';" id="signout">Sign Out</button>
+    <p id="user">
+      Hello {{ user.name }}
+    </p>
+  </div>
+  
+  {% if error %}
+    <p class="error"><strong>Error:</strong> {{ error }} </p>
+  {% endif %}
+
+  <!--Month/year top of calendar--> 
+  <h1 id="monthtitle" align="center">
+   {{ month.month }} {{ month.year }}
+  </h1>
+  <br />
+  
+
+  <form action="" method="post">
+    {% if month.next %}
+      <input class="btn btn-default" type="submit" name="back" id="back" value=" &laquo; "/>
+    {% endif %}
+    {% if not month.next %}
+    <input class="btn btn-default" type="submit" name="next" id="next" value=" &raquo; "/>
+    {% endif %}
+  </form>
+
+<table id="calendar" bgcolor="#fbff84" align="center" 
+        cellspacing="0" cellpadding="30">
+  
+  <caption align="top">
+    
+    </caption>
+  
+  <thead>
+     <tr bgcolor="#fa9020">
+         <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+     </tr>
+	</thead>
+        <tbody>
+          {% for week in month.cal %}
+            <tr>
+              {% for day in week %}
+                {% if shifts[day] == '' %}
+                  <td> {{day}} </td>
+                {% elif day == '' %}
+                  <td> {{day}} </td>
+                {% else %}
+                  <td style="color:red; font-weight: bold;" class="hovertext" data-hover={{ shifts[day] }}> {{day}} </td>
+                {% endif %}
+              {% endfor %}
+       			</tr>
+          {% endfor %}
+        </tbody>
+    </table>
+</body> 

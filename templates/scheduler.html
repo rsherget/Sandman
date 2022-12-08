@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <title> Sandman </title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <div id="header">
+      <button onclick="location.href = '/home';" id="home">Home</button>
+      <button onclick="location.href = '/remove-employee';" id="remove-employee"> Fire Employee </button>
+      <button onclick="location.href = '/add-employee';" id="add-employee"> Add Employee </button>
+      <button onclick="location.href = '/all-employees';" id="manager"> Employer Tools </button>
+      <button onclick="location.href = '/scheduler';" id="scheduler"> Create Schedule </button>
+      <button onclick="location.href = '/logout';" id="signout">Sign Out</button>
+      </div>
+  
+  {% if error %}
+    <p class="error"><strong>Error:</strong> {{ error }} </p>
+  {% endif %}
+
+  <!--Month/year top of calendar--> 
+  <h1 id="monthtitle" align="center">
+    {{ week.month }} {{ week.year }}
+  </h1>
+
+  <form action="" method="post">
+    <input class="" name="min" value={{ week.min }} hidden/>
+    <input class="" name="max" value={{ week.max }} hidden/>
+    <input class="btn btn-default" type="submit" name="lastweek" id="lastweek" value=" &laquo; "/>
+    <input class="btn btn-default" type="submit" name="nextweek" id="nextweek" value=" &raquo; "/>
+  </form>
+
+  <div id="weeklyview">
+    <table id="days">
+      <tr>
+        <th>Sun {{ week.week[0] }}</th>
+        <th>Mon {{ week.week[1] }}</th>
+        <th>Tues {{ week.week[2] }}</th>
+        <th>Wed {{ week.week[3] }}</th>
+        <th>Thur {{ week.week[4] }}</th>
+        <th>Fri {{ week.week[5] }}</th>
+        <th>Sat {{ week.week[6] }}</th>
+      </tr>
+      <tr>
+        {% for i in range(7) %}
+          <td>
+            <table id="shifts">
+              {% for shift in shifts[i] %}
+                <tr>
+                  <td>
+                    <form action="" method="post">
+                      <input class="" name="min" value={{ week.min }} hidden/>
+                      <input class="" name="shiftID" value={{ shift.id }} hidden/>
+                      <button id="shiftButton" name="input" type="submit" value="">{{ shift.user_id }}</button>
+                    </form>
+                  </td>
+                  <td>{{ shift.start }}</td>
+                  <td>{{ shift.end }}</td>
+                </tr>
+              {% endfor %}
+            </table>
+          </td>
+        {% endfor %}
+      </tr>
+    </table>
+  </div>
+    
+  <form action="" method="post">
+    <select id="user_id" name="user_id" required>
+      {% for user in users %}
+        <option value={{ user.id }}> {{ user.name }} ({{ user.id }})</option>
+      {% endfor %}
+    </select>
+    <input id="start" required name="start" type="datetime-local" min={{ week.min }} max={{ week.max }}></input>
+    <input id="end" required name="end" type="datetime-local" min={{ week.min }} max={{ week.max }}></input>
+    <button id="submit" type="submit">Submit</button>
+  </form>
+</body>
+</html>

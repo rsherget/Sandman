@@ -1,0 +1,200 @@
+input[type=submit] {
+  background-color: magenta;
+  border-radius: 25px;
+}
+
+#shiftButton {
+  border-radius: 25px;
+  padding: 5px;
+}
+
+#back {
+  position: absolute;
+  margin: auto;
+  left: 535px;
+  top: 135px;
+}
+#next {
+  position: absolute;
+  margin: auto;
+  right: 535px;
+  top: 135px;
+}
+
+#lastweek {
+  position: absolute;
+  margin: auto;
+  left: 90px;
+  top: 135px;
+}
+#nextweek {
+  position: absolute;
+  margin: auto;
+  right: 120px;
+  top: 135px;
+}
+
+input{
+  border-radius: 25px;
+  padding: 8px;
+}
+
+button{
+  background-color: magenta;
+  border-radius: 25px;
+  padding: 4px 8px;
+}
+
+select {
+  background-color: magenta;
+  border-radius: 25px;
+  padding: 4px 8px;
+  outline-color: black;
+  outline-style: solid;
+  outline-width: 2px;
+}
+
+#days{
+  position: fixed;
+  left: 5%;
+  top: 20%;
+}
+
+#days td{
+  width: 205px;
+  height: 100px;
+  border-radius: 25px;
+  border: solid;
+  background-color: #fbff84;
+  overflow: scroll;
+}
+
+#shifts tr{
+  border: solid;
+  border-radius: 25px;
+}
+
+#shifts td{
+  padding: 10px 5px;
+  width: 50px;
+  height: 50px;
+  border: none;
+}
+
+#user_id{
+  position: fixed;
+  left: 20%;
+  top: 75%;
+}
+
+#start{
+  position: fixed;
+  left: 38%;
+  top: 75%;
+}
+
+#end{
+  position: fixed;
+  left: 70%;
+  top: 75%;
+}
+
+#submit{
+  position: fixed;
+  left: 45%;
+  top: 85%;
+}
+
+#user {
+  font-weight: bold;
+  font-size: 20px;
+  color: magenta;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  position: absolute; 
+  top: 0; 
+  right: 0;
+  padding: 0px 12px;
+}
+
+.error {
+  font-size: 20px;
+  color: red;
+  text-align: center;
+}
+
+#logo {
+  position: relative;
+  margin: auto;
+  width: 30%;
+}
+
+#logotext {
+  font-weight: bold;
+  color: magenta;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  font-size: 44px;
+  position: absolute;
+  left: 170px;
+}
+
+#logindiv {
+  text-align: center;
+  font-size: 20px;
+}
+
+#calendar{
+  border: solid;
+  border-radius: 25px;
+}
+
+#monthtitle {
+  font-weight: bold;
+  color: magenta;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  font-size: 44px;
+}
+
+table th:first-child{
+  border-radius: 25px 0 0 0px;
+}
+
+table th:last-child{
+  border-radius:0 25px 0px 0;
+}
+
+.hovertext{
+  position: relative;
+}
+
+.hovertext::before {
+  content: attr(data-hover);
+  opacity: 0;
+  width: 300px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 5px;
+  transition: opacity 1s ease-in-out;
+  
+  position:absolute;
+  z-index: 1;
+  left: 0%;
+  top: 110%;
+}
+
+.hovertext:hover::before{
+  opacity: 1;
+  visibility: visibile;
+}
+
+body {
+  background-color: #00bbe0;
+}
+
+* {
+  font-family: comic sans ms;
+}
